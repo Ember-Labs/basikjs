@@ -1,13 +1,13 @@
-﻿using BasikJS.Entities;
+﻿using BasikJS.Entities.Basik;
 
 namespace BasikJS
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var cli = new BasikCLI();
-            cli.WaitForNext();
+            await cli.WaitForNext();
         }
     }
 }

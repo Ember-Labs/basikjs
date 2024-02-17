@@ -11,4 +11,13 @@
     <PackageReference Include="Jint" Version="3.0.0-beta-2055" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Intrinsics\global.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Intrinsics\workers.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
