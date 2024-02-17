@@ -1,4 +1,6 @@
-﻿namespace BasikJS.Entities.Basik
+﻿using Spectre.Console;
+
+namespace BasikJS.Entities.Basik
 {
     public class BasikCLI
     {
@@ -13,7 +15,7 @@
         {
             var nextStatement = Console.ReadLine();
             var result = await engine.EvaluateAsync(nextStatement ?? "", "front-worker");
-            Console.WriteLine(result);
+            AnsiConsole.Markup(result.ToString()!);
             await WaitForNext();
         }
     }

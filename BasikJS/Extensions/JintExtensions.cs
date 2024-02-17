@@ -21,9 +21,11 @@ namespace BasikJS.Extensions
 
             var global = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "global.js"));
             var workers = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "workers.js"));
+            var help = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "help.js"));
 
             worker.Execute(global);
             worker.Execute(workers);
+            worker.Execute(help);
 
             return worker;
         }

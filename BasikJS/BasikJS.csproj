@@ -9,10 +9,15 @@
 
   <ItemGroup>
     <PackageReference Include="Jint" Version="3.0.0-beta-2055" />
+    <PackageReference Include="Spectre.Console" Version="0.48.1-preview.0.28" />
+    <PackageReference Include="Spectre.Console.Cli" Version="0.48.1-preview.0.28" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Intrinsics\global.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Intrinsics\help.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Intrinsics\workers.js">
