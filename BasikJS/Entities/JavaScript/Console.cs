@@ -1,23 +1,18 @@
-﻿using Jint;
+﻿using BasikJS.Entities.Basik;
+using Jint;
 using Jint.Native;
 using Jint.Native.Error;
 using Jint.Runtime.Interop;
 using Spectre.Console;
 using System.Text.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BasikJS.Entities.JavaScript
 {
-    public class Console
+    public class Console(BasikEngine engine, bool enableDebugMode = true)
     {
-        public List<object> Records { get; }
-        private readonly bool _enableDebugMode;
-
-        public Console(bool enableDebugMode = true)
-        {
-            Records = new();
-            _enableDebugMode = enableDebugMode;
-        }
+        public List<object> Records { get; } = new();
+        private readonly bool _enableDebugMode = enableDebugMode;
+        private readonly BasikEngine _engine = engine;
 
         public void Log(JsValue value)
         {
@@ -92,12 +87,20 @@ namespace BasikJS.Entities.JavaScript
                     AnsiConsole.Markup(debugTag + "{0}", response.EscapeMarkup());
                     return;
                 }
-                catch(Exception e)
+                catch
                 {
+                    // For non-function cases, the "interop-worker" will be used to serialize
+                    // the object.
+                    // TODO: Add the transitional id to the interop-worker garbage collector after usage
+                    var interopWorker = _engine.Workers["interop-worker"];
+                    var transitionalId = "transitional_" + Guid.NewGuid().ToString().Replace("-", "");
+                    interopWorker.SetValue(transitionalId, value.AsObject().ToObject());
+
+                    var result = interopWorker.Evaluate($"JSON.stringify({transitionalId})").AsString();
                     var debugTag = _enableDebugMode ? "[bold green](Object)[/] " : "";
-                    var serialized = JsonSerializer.Serialize(value.AsObject().ToObject());
-                    Records.Add(serialized);
-                    AnsiConsole.Markup(debugTag + "{0}", (serialized ?? "undefined").EscapeMarkup());
+                    
+                    Records.Add(result);
+                    AnsiConsole.Markup(debugTag + "{0}", (result ?? "undefined").EscapeMarkup());
                     return;
                 }
 

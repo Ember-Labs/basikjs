@@ -9,7 +9,7 @@ namespace BasikJS.Extensions
         public static Engine SetupAsWorker(this Engine worker, BasikEngine topLevelEngine)
         {
             // Console
-            var globalConsole = new Entities.JavaScript.Console();
+            var globalConsole = new Entities.JavaScript.Console(topLevelEngine);
             worker.SetValue("console", globalConsole);
             
             // Global
@@ -31,6 +31,11 @@ namespace BasikJS.Extensions
             worker.Execute(workers);
 
             // Help
+
+            worker.SetValue("_basikJsInternals_help_getSharedText", Properties.Resources.Guide_workers_getShared);
+            worker.SetValue("_basikJsInternals_help_setSharedText", Properties.Resources.Guide_workers_setShared);
+            worker.SetValue("_basikJsInternals_help_console_log", Properties.Resources.Guide_console_log);
+            
             var help = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "help.js"));
             worker.Execute(help);
 

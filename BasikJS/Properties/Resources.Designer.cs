@@ -61,11 +61,42 @@ namespace BasikJS.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to [bold green]console[/].[bold yellow]log[/](...args: [bold yellow]Array&lt;any&gt;[/])
+        ///
+        ///[yellow]&lt;Sync Method&gt;[/] [green]&lt;Stable&gt;[/] [green]&lt;Safe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+        ///
+        ///Prints a variable to the console..
         /// </summary>
-        internal static string Guide_ {
+        internal static string Guide_console_log {
             get {
-                return ResourceManager.GetString("Guide_", resourceCulture);
+                return ResourceManager.GetString("Guide_console_log", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [bold fuchsia]Basik[/].[bold green]workers[/].[bold yellow]getShared[/]()
+        ///
+        ///[yellow]&lt;Sync Method&gt;[/] [green]&lt;Stable&gt;[/] [red]&lt;Unsafe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+        ///
+        ///Provides access to the workers global shared object. Is stored inside the CLR application.
+        ///Only a single instance of the shared object will exist per application..
+        /// </summary>
+        internal static string Guide_workers_getShared {
+            get {
+                return ResourceManager.GetString("Guide_workers_getShared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [bold fuchsia]Basik[/].[bold green]workers[/].[bold yellow]setShared[/](key: [bold yellow]string[/], value: [bold yellow]any[/])
+        ///
+        ///[yellow]&lt;Sync Method&gt;[/] [green]&lt;Stable&gt;[/] [red]&lt;Unsafe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+        ///
+        ///Sets any value inside the workers global shared object. Not thread safe..
+        /// </summary>
+        internal static string Guide_workers_setShared {
+            get {
+                return ResourceManager.GetString("Guide_workers_setShared", resourceCulture);
             }
         }
     }

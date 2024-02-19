@@ -16,14 +16,18 @@ namespace BasikJS.Entities.Basik
         {
             MaxRecursionDepth = 64;
             Shared = new();
-
+            
             var frontWorker = new Engine(cfg => cfg.LimitRecursion(MaxRecursionDepth)).SetupAsWorker(this);
+
+            // TODO: Add custom garbage collectors to workers that are not the front-worker
             var ioWorker = new Engine(cfg => cfg.LimitRecursion(MaxRecursionDepth)).SetupAsWorker(this);
+            var interopWorker = new Engine(cfg => cfg.LimitRecursion(MaxRecursionDepth)).SetupAsWorker(this);
 
             Workers = new()
             {
                 ["front-worker"] = frontWorker,
-                ["io-worker"] = ioWorker
+                ["io-worker"] = ioWorker,
+                ["interop-worker"] = interopWorker
             };
         }
 
