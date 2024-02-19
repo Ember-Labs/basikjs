@@ -35,6 +35,7 @@ namespace BasikJS.Extensions
             worker.SetValue("_basikJsInternals_help_getSharedText", Properties.Resources.Guide_workers_getShared);
             worker.SetValue("_basikJsInternals_help_setSharedText", Properties.Resources.Guide_workers_setShared);
             worker.SetValue("_basikJsInternals_help_console_log", Properties.Resources.Guide_console_log);
+            worker.SetValue("_basikJsInternals_help_pipelines_createCommand", Properties.Resources.Guide_pipelines_createCommand);
             
             var help = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "help.js"));
             worker.Execute(help);

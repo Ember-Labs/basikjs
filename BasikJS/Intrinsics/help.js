@@ -7,6 +7,7 @@ Basik.guide = (name) => {
         "console:log": _basikJsInternals_help_console_log,
         "workers:getShared": _basikJsInternals_help_getSharedText,
         "workers:setShared": _basikJsInternals_help_setSharedText,
+        "pipelines:createCommand": _basikJsInternals_help_pipelines_createCommand
     }
 
     if (!name) {

@@ -74,6 +74,25 @@ namespace BasikJS.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [bold fuchsia]Basik[/].[bold green]pipelines[/].[bold yellow]createCommand[/]()
+        ///
+        ///[yellow]&lt;Sync Method&gt;[/] [yellow]&lt;Unstable&gt;[/] [red]&lt;Unsafe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+        ///
+        ///Creates a command object that can be used to execute external shell tasks asynchronously.
+        ///
+        ///[bold fuchsia]Command[/].[bold green]run[/](entrypoint: [bold yellow]string[/], args: [bold yellow]Array&lt;string&gt;[/])
+        ///
+        ///[green]&lt;Async Method&gt;[/] [yellow]&lt;Unstable&gt;[/] [red]&lt;Unsafe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+        ///
+        ///Runs an arbitrary command and return [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Guide_pipelines_createCommand {
+            get {
+                return ResourceManager.GetString("Guide_pipelines_createCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [bold fuchsia]Basik[/].[bold green]workers[/].[bold yellow]getShared[/]()
         ///
         ///[yellow]&lt;Sync Method&gt;[/] [green]&lt;Stable&gt;[/] [red]&lt;Unsafe&gt;[/] &lt;Last Updated: v0.0.1&gt;

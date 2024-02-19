@@ -124,6 +124,43 @@
 
 Prints a variable to the console.</value>
   </data>
+  <data name="Guide_pipelines_createCommand" xml:space="preserve">
+    <value>[bold fuchsia]Basik[/].[bold green]pipelines[/].[bold yellow]createCommand[/]()
+
+[yellow]&lt;Sync Method&gt;[/] [yellow]&lt;Unstable&gt;[/] [red]&lt;Unsafe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+
+Creates a command object that can be used to execute external shell tasks asynchronously.
+
+[bold fuchsia]Command[/].[bold green]run[/](entrypoint: [bold yellow]string[/], args: [bold yellow]Array&lt;string&gt;[/])
+
+[green]&lt;Async Method&gt;[/] [yellow]&lt;Unstable&gt;[/] [red]&lt;Unsafe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+
+Runs an arbitrary command and returns a [yellow]CommandResult[/] object.
+
+[bold fuchsia]CommandResult[/].[bold green]stdout[/]
+
+[green]&lt;Field&gt;[/] [green]&lt;Stable&gt;[/] [green]&lt;Safe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+
+Contains the buffer for the executed command stdout
+
+[bold fuchsia]CommandResult[/].[bold green]stderr[/]
+
+[green]&lt;Field&gt;[/] [green]&lt;Stable&gt;[/] [green]&lt;Safe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+
+Contains the buffer for the executed command stderr
+
+[bold fuchsia]CommandResult[/].[bold green]saveOut[/](path: [bold yellow]string[/])
+
+[green]&lt;Async Method&gt;[/] [yellow]&lt;Unstable&gt;[/] [red]&lt;Unsafe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+
+Saves the stdout object to an external file
+
+[bold fuchsia]CommandResult[/].[bold green]saveErr[/](path: [bold yellow]string[/])
+
+[green]&lt;Async Method&gt;[/] [yellow]&lt;Unstable&gt;[/] [red]&lt;Unsafe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+
+Saves the stderr object to an external file</value>
+  </data>
   <data name="Guide_workers_getShared" xml:space="preserve">
     <value>[bold fuchsia]Basik[/].[bold green]workers[/].[bold yellow]getShared[/]()
 
