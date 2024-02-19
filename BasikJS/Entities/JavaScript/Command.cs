@@ -7,14 +7,16 @@ namespace BasikJS.Entities.JavaScript
         public required byte[] Stdout { get; set; }
         public required byte[] Stderr { get; set; }
 
-        public async Task SaveOut(string path)
+        public async Task<bool> SaveOut(string path)
         {
             await File.WriteAllBytesAsync(path, Stdout);
+            return true;
         }
 
-        public async Task SaveErr(string path)
+        public async Task<bool> SaveErr(string path)
         {
             await File.WriteAllBytesAsync(path, Stderr);
+            return true;
         }
     }
 
@@ -33,6 +35,7 @@ namespace BasikJS.Entities.JavaScript
                 .WithWorkingDirectory(_workingDirectory)
                 .WithStandardOutputPipe(PipeTarget.ToStream(stdOutBuffer))
                 .WithStandardErrorPipe(PipeTarget.ToStream(stdErrBuffer))
+                .WithValidation(CommandResultValidation.None)
                 .ExecuteAsync();
 
             var commandResult = new CommandResult
