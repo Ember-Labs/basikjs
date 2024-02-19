@@ -1,6 +1,5 @@
 ﻿using BasikJS.Entities.Basik;
 using Jint;
-using System.Reflection;
 
 namespace BasikJS.Extensions
 {
@@ -8,6 +7,9 @@ namespace BasikJS.Extensions
     {
         public static Engine SetupAsWorker(this Engine worker, BasikEngine topLevelEngine)
         {
+            var globalConsole = new Entities.JavaScript.Console();
+            worker.SetValue("console", globalConsole);
+
             worker.SetValue(
                 "_basikJsInternals_workers_getSharedRaw", 
                 () => {

@@ -1,6 +1,7 @@
 ﻿using BasikJS.Extensions;
 using Jint;
-using Jint.Native;
+using Spectre.Console;
+using System.Diagnostics;
 
 namespace BasikJS.Entities.Basik
 {
@@ -25,20 +26,33 @@ namespace BasikJS.Entities.Basik
 
         public async Task<object> EvaluateAsync(string script, string workerName)
         {
-            return await Task.Run<object>(() =>
+            var task = new Task<object>(() =>
             {
-                var containsWorker = Workers.TryGetValue(workerName, out var worker);
-
-                if (!containsWorker)
+                try
                 {
-                    return new BasikError
-                    {
-                        Message = "Cannot find worker with name: " + workerName
-                    };
-                }
+                    var containsWorker = Workers.TryGetValue(workerName, out var worker);
 
-                return worker!.Evaluate(script);
+                    if (!containsWorker)
+                    {
+                        return new BasikError
+                        {
+                            Message = "Cannot find worker with name: " + workerName
+                        };
+                    }
+
+                    return worker!.Evaluate(script);
+                }
+                catch(Exception ex)
+                {
+                    var uptime = DateTime.UtcNow - Process.GetCurrentProcess().StartTime.ToUniversalTime();
+                    AnsiConsole.MarkupLine($"[red](!!!) Last execution failed after {uptime}[/]");
+                    AnsiConsole.MarkupLine($"\t [white]{ex.Message}[/]");
+                    return "undefined";
+                }
             });
+
+            task.Start();
+            return await task;
         }
     }
 }

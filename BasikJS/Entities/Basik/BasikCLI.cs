@@ -15,7 +15,11 @@ namespace BasikJS.Entities.Basik
         {
             var nextStatement = Console.ReadLine();
             var result = await engine.EvaluateAsync(nextStatement ?? "", "front-worker");
-            AnsiConsole.Markup(result.ToString()!);
+
+            Console.WriteLine();
+            AnsiConsole.Markup($"[gray]{result}[/]");
+            Console.WriteLine();
+
             await WaitForNext();
         }
     }
