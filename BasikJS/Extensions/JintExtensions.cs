@@ -1,4 +1,5 @@
 ﻿using BasikJS.Entities.Basik;
+using BasikJS.Entities.JavaScript;
 using Jint;
 
 namespace BasikJS.Extensions
@@ -7,11 +8,17 @@ namespace BasikJS.Extensions
     {
         public static Engine SetupAsWorker(this Engine worker, BasikEngine topLevelEngine)
         {
+            // Console
             var globalConsole = new Entities.JavaScript.Console();
             worker.SetValue("console", globalConsole);
+            
+            // Global
+            var global = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "global.js"));
+            worker.Execute(global);
 
+            // Workers
             worker.SetValue(
-                "_basikJsInternals_workers_getSharedRaw", 
+                "_basikJsInternals_workers_getSharedRaw",
                 () => {
                     return topLevelEngine.Shared;
                 });
@@ -20,14 +27,18 @@ namespace BasikJS.Extensions
                 (string key, object value) => {
                     topLevelEngine.Shared[key] = value;
                 });
-
-            var global = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "global.js"));
             var workers = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "workers.js"));
-            var help = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "help.js"));
-
-            worker.Execute(global);
             worker.Execute(workers);
+
+            // Help
+            var help = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "help.js"));
             worker.Execute(help);
+
+            // Pipelines
+            worker.SetValue("_basikJsInternals_pipelines_createCommand", Command.Create);
+            var pipelines = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "pipelines.js"));
+            worker.Execute(pipelines);
+
 
             return worker;
         }

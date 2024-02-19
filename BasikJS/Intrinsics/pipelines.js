@@ -1,0 +1,1 @@
+﻿Basik.pipelines.createCommand = _basikJsInternals_pipelines_createCommand;

@@ -11,5 +11,8 @@ const Basik = {
     workers: {
         getShared: "not-initialized",
         setShared: "not-initialized"
+    },
+    pipelines: {
+        createCommand: "not-initialized"
     }
 };
