@@ -59,8 +59,6 @@ namespace BasikJS.Entities.JavaScript
 
             if (value.IsObject())
             {
-                
-
                 try
                 {
                     var debugTag = _enableDebugMode ? "[bold magenta](Function)[/] " : "";
@@ -74,15 +72,15 @@ namespace BasikJS.Entities.JavaScript
                         return;
                     }
 
-                    if (obj.GetType() != typeof(ClrFunctionInstance))
+                    if (obj.GetType() != typeof(ClrFunctionInstance) && obj.GetType() != typeof(DelegateWrapper))
                     {
-                        var funcResponse = new string(obj.FunctionDeclaration.ToString());
+                        var funcResponse = new string(obj.FunctionDeclaration?.ToString());
                         Records.Add(funcResponse);
                         AnsiConsole.Markup(debugTag + "{0}", funcResponse.EscapeMarkup());
                         return;
                     }
 
-                    var response = "function() { (ClrNativeFunction) }";
+                    var response = "function() { (ClrWrapperFunction) }";
                     Records.Add(response);
                     AnsiConsole.Markup(debugTag + "{0}", response.EscapeMarkup());
                     return;

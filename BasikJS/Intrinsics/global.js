@@ -5,9 +5,7 @@
 
 const Basik = {
     currentVersion: '0.0.1',
-    help: {
-        show: "not-initialized"
-    },
+    guide: "not-initialized",
     workers: {
         getShared: "not-initialized",
         setShared: "not-initialized"
