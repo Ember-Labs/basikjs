@@ -6,6 +6,13 @@ BasikJS is a ***TypeScript*** runtime written in modern .NET, focused on DevOps,
 
 ## Architecture Sketches
 
+### External tool usage
+
+- [Vite] -> [Pre-compiling?]
+- [Jint] -> [JavaScript interpreter]
+- [CliWrap] -> [Cli operations]
+- [Spectre] -> [Cli beautify/utility]
+
 ### Worker manual garbage collection
 
 - [Front worker] -> [Default JS Garbage collection]
