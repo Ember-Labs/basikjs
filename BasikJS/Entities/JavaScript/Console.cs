@@ -1,12 +1,7 @@
 ﻿using Jint;
 using Jint.Native;
 using Spectre.Console;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace BasikJS.Entities.JavaScript
 {
@@ -69,11 +64,20 @@ namespace BasikJS.Entities.JavaScript
                 var debugTag = _enableDebugMode ? "[bold green](Object)[/] " : "";
                 var serialized = JsonSerializer.Serialize(value.AsObject().ToObject());
                 Records.Add(serialized);
-                AnsiConsole.Markup(debugTag + serialized ?? "undefined");
+                AnsiConsole.Markup(debugTag + "{0}", (serialized ?? "undefined").EscapeMarkup());
                 return;
             }
 
             AnsiConsole.Markup("[bold yellow](object Unknown)[/]");
+        }
+
+        public void Log(params JsValue[] values) 
+        {
+            foreach (var item in values)
+            {
+                Log(item);
+                System.Console.WriteLine();
+            }
         }
     }
 }

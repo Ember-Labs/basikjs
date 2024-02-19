@@ -17,7 +17,7 @@ namespace BasikJS.Entities.Basik
             var result = await engine.EvaluateAsync(nextStatement ?? "", "front-worker");
 
             Console.WriteLine();
-            AnsiConsole.Markup($"[gray]{result}[/]");
+            AnsiConsole.Markup("[gray]{0}[/]", (result?.ToString() ?? "undefined").EscapeMarkup());
             Console.WriteLine();
 
             await WaitForNext();
