@@ -1,7 +1,10 @@
 ﻿using Jint;
 using Jint.Native;
+using Jint.Native.Error;
+using Jint.Runtime.Interop;
 using Spectre.Console;
 using System.Text.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BasikJS.Entities.JavaScript
 {
@@ -61,11 +64,43 @@ namespace BasikJS.Entities.JavaScript
 
             if (value.IsObject())
             {
-                var debugTag = _enableDebugMode ? "[bold green](Object)[/] " : "";
-                var serialized = JsonSerializer.Serialize(value.AsObject().ToObject());
-                Records.Add(serialized);
-                AnsiConsole.Markup(debugTag + "{0}", (serialized ?? "undefined").EscapeMarkup());
-                return;
+                
+
+                try
+                {
+                    var debugTag = _enableDebugMode ? "[bold magenta](Function)[/] " : "";
+                    var obj = (dynamic)value;
+
+                    if (obj.GetType() == typeof(ErrorConstructor))
+                    {
+                        var errorResponse = "function() { (ErrorInstance) }";
+                        Records.Add(errorResponse);
+                        AnsiConsole.Markup(debugTag + "{0}", errorResponse.EscapeMarkup());
+                        return;
+                    }
+
+                    if (obj.GetType() != typeof(ClrFunctionInstance))
+                    {
+                        var funcResponse = new string(obj.FunctionDeclaration.ToString());
+                        Records.Add(funcResponse);
+                        AnsiConsole.Markup(debugTag + "{0}", funcResponse.EscapeMarkup());
+                        return;
+                    }
+
+                    var response = "function() { (ClrNativeFunction) }";
+                    Records.Add(response);
+                    AnsiConsole.Markup(debugTag + "{0}", response.EscapeMarkup());
+                    return;
+                }
+                catch(Exception e)
+                {
+                    var debugTag = _enableDebugMode ? "[bold green](Object)[/] " : "";
+                    var serialized = JsonSerializer.Serialize(value.AsObject().ToObject());
+                    Records.Add(serialized);
+                    AnsiConsole.Markup(debugTag + "{0}", (serialized ?? "undefined").EscapeMarkup());
+                    return;
+                }
+
             }
 
             AnsiConsole.Markup("[bold yellow](object Unknown)[/]");
