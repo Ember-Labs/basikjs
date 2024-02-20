@@ -18,3 +18,9 @@ BasikJS is a ***TypeScript*** runtime written in modern .NET, focused on DevOps,
 - [Front worker] -> [Default JS Garbage collection]
 - [IO worker] -> [Manual Garbage collection through free api?]
 - [Interop worker] -> [Manual Garbage collection through free api?]
+
+### General todo
+
+- [ ] Command line invoker
+- [ ] Fixed command line to be cross platform
+- [ ] IO Module with FileSystem, HTTP(S), FTP, SSH
