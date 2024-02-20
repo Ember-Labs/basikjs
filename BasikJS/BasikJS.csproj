@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
+	<PublishSingleFile>true</PublishSingleFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,6 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Intrinsics\console.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Intrinsics\global.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -43,6 +47,10 @@
     <None Update="Intrinsics\workers.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TypeConverters\" />
   </ItemGroup>
 
 </Project>

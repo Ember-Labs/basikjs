@@ -1,7 +1,9 @@
 ﻿using BasikJS.Extensions;
 using Jint;
+using Jint.Runtime.Interop;
 using Spectre.Console;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace BasikJS.Entities.Basik
 {

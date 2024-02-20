@@ -3,12 +3,6 @@
 // all the callable definitions to be futurely set up by the
 // internal interop setup
 
-const console = {
-    log: "not-initialized",
-    clear: "not-initialized",
-    read: "not-initialized" 
-}
-
 const Basik = {
     currentVersion: '0.0.1',
     guide: "not-initialized",

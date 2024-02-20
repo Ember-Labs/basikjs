@@ -9,9 +9,10 @@ namespace BasikJS.Extensions
         public static Engine SetupAsWorker(this Engine worker, BasikEngine topLevelEngine)
         {
             // Console
-            var globalConsole = new Entities.JavaScript.Console(topLevelEngine);
-            worker.SetValue("console", globalConsole);
-            
+            worker.SetValue("_basikJsInternals_createConsole", () => new Entities.JavaScript.Console(topLevelEngine));
+            var console = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "console.js"));
+            worker.Execute(console);
+
             // Global
             var global = File.ReadAllText(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Intrinsics", "global.js"));
             worker.Execute(global);
