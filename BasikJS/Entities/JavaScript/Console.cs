@@ -123,5 +123,16 @@ namespace BasikJS.Entities.JavaScript
             Readings.Add(content);
             return content;
         }
+
+        public void Clear(bool preserveHistory = false)
+        {
+            if (!preserveHistory)
+            {
+                Records.Clear();
+                Readings.Clear();
+            }
+
+            System.Console.Clear();
+        }
     }
 }

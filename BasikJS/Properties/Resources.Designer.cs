@@ -61,6 +61,19 @@ namespace BasikJS.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [bold green]console[/].[bold yellow]clear[/](preserveHistory: [bold yellow]boolean[/])
+        ///
+        ///[yellow]&lt;Sync Method&gt;[/] [green]&lt;Stable&gt;[/] [green]&lt;Safe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+        ///
+        ///Clears the console. The argument [bold yellow]preserveHistory[/] can be used to avoid deleting the content of the Records and Readings objects..
+        /// </summary>
+        internal static string Guide_console_clear {
+            get {
+                return ResourceManager.GetString("Guide_console_clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [bold green]console[/].[bold yellow]log[/](...args: [bold yellow]Array&lt;any&gt;[/])
         ///
         ///[yellow]&lt;Sync Method&gt;[/] [green]&lt;Stable&gt;[/] [green]&lt;Safe&gt;[/] &lt;Last Updated: v0.0.1&gt;
