@@ -11,6 +11,7 @@ namespace BasikJS.Entities.JavaScript
     public class Console(BasikEngine engine, bool enableDebugMode = true)
     {
         public List<object> Records { get; } = new();
+        public List<string?> Readings { get; } = new();
         private readonly bool _enableDebugMode = enableDebugMode;
         private readonly BasikEngine _engine = engine;
 
@@ -114,6 +115,13 @@ namespace BasikJS.Entities.JavaScript
                 Log(item);
                 System.Console.WriteLine();
             }
+        }
+
+        public string? Read()
+        {
+            var content = System.Console.ReadLine();
+            Readings.Add(content);
+            return content;
         }
     }
 }

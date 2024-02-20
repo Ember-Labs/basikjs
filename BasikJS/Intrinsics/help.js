@@ -5,6 +5,7 @@
 Basik.guide = (name) => {
     const indexes = {
         "console:log": _basikJsInternals_help_console_log,
+        "console:read": _basikJsInternals_help_console_read,
         "workers:getShared": _basikJsInternals_help_getSharedText,
         "workers:setShared": _basikJsInternals_help_setSharedText,
         "pipelines:createCommand": _basikJsInternals_help_pipelines_createCommand

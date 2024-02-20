@@ -74,6 +74,19 @@ namespace BasikJS.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [bold green]console[/].[bold yellow]read[/]()
+        ///
+        ///[yellow]&lt;Sync Method&gt;[/] [green]&lt;Stable&gt;[/] [green]&lt;Safe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+        ///
+        ///Reads and returns the next line typed by the default stdin..
+        /// </summary>
+        internal static string Guide_console_read {
+            get {
+                return ResourceManager.GetString("Guide_console_read", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [bold fuchsia]Basik[/].[bold green]pipelines[/].[bold yellow]createCommand[/]()
         ///
         ///[yellow]&lt;Sync Method&gt;[/] [yellow]&lt;Unstable&gt;[/] [red]&lt;Unsafe&gt;[/] &lt;Last Updated: v0.0.1&gt;

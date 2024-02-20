@@ -124,6 +124,13 @@
 
 Prints a variable to the console.</value>
   </data>
+  <data name="Guide_console_read" xml:space="preserve">
+    <value>[bold green]console[/].[bold yellow]read[/]()
+
+[yellow]&lt;Sync Method&gt;[/] [green]&lt;Stable&gt;[/] [green]&lt;Safe&gt;[/] &lt;Last Updated: v0.0.1&gt;
+
+Reads and returns the next line typed by the default stdin.</value>
+  </data>
   <data name="Guide_pipelines_createCommand" xml:space="preserve">
     <value>[bold fuchsia]Basik[/].[bold green]pipelines[/].[bold yellow]createCommand[/]()
 
