@@ -11,6 +11,8 @@ const Basik = {
         setShared: "not-initialized"
     },
     pipelines: {
-        createCommand: "not-initialized"
+        command: {
+            open: "not-initialized"
+        }
     }
 };
