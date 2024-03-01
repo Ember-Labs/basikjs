@@ -38,9 +38,6 @@
     <None Update="Intrinsics\global.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Intrinsics\help.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Intrinsics\pipelines.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

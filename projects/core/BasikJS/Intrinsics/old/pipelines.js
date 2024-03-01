@@ -2,8 +2,6 @@
 
 // TODO: Debug and find deadlock
 Basik.pipelines.command.open = async (commandOptions) => {
-    "unsafe";
-
     const isOpen = true;
 
     const {
@@ -62,11 +60,12 @@ Basik.pipelines.command.open = async (commandOptions) => {
                 },
                 saveErr: async (path) => {
                     const saveErrTask = result.saveErr(path);
-                    const saveErrTask = await saveErrTask.getAwaiter().getResult();
-                    return saveErrTask;
+                    const saveErrResult = await saveErrTask.getAwaiter().getResult();
+                    return saveErrResult;
                 }
             }
         },
+
         close: () => {
             isOpen = false;
         }
