@@ -1,0 +1,1 @@
+declare const __internalInterop: Record<string, any>;
