@@ -10,15 +10,6 @@ BasikJS is a ***TypeScript*** runtime written in modern .NET, focused on DevOps,
 const { command } = Basik.pipelines;
 
 const handler = await command.open({ shellFallback: ['bash'] });
-await command.run('git', ['pull']);
-```
-
-or
-
-```ts
-const { command } = Basik.pipelines;
-
-const handler = await command.open({ shellFallback: ['bash'] });
 await command.run('git pull');
 ```
 
