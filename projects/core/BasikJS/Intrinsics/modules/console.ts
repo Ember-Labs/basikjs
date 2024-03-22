@@ -1,31 +1,29 @@
-export const console = (() => {
-    class Console {
-        getReadings: () => string[];
-        getRecords: () => string[];
-        _interopObject: any;
+class Console {
+    private interopObject: any;
 
-        constructor(enableDebugMode: boolean) {
-            this._interopObject = __internalInterop['create-console'](enableDebugMode);
-            this.getReadings = () => {
-                return Array.from(this._interopObject.readings);
-            }
-            this.getRecords = () => {
-                return Array.from(this._interopObject.records);
-            }
-        }
-
-        log(...args: any[]) {
-            this._interopObject.log(...args);
-        }
-
-        read() {
-            return this._interopObject.read();
-        }
-
-        clear() {
-            this._interopObject.clear();
-        }
+    constructor(enableDebugMode: boolean) {
+        this.interopObject = __internalInterop['create-console'](enableDebugMode);
     }
 
-    return new Console(true);
-})()
+    public getReadings() {
+        return Array.from<string>(this.interopObject.readings)
+    }
+
+    public getRecords() {
+        return Array.from<string>(this.interopObject.records);
+    }
+
+    log(...args: any[]): void {
+        this.interopObject.log(...args);
+    }
+
+    read(): string | null {
+        return this.interopObject.read();
+    }
+
+    clear(): void {
+        this.interopObject.clear();
+    }
+}
+
+export const console = new Console(true);
